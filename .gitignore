@@ -2,3 +2,6 @@
 Stellar.pdf
 app.py
 .env
+testing_openai.py
+vector_db_conver.py
+/data
