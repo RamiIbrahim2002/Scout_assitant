@@ -23,6 +23,9 @@ from langchain.schema import BaseRetriever
 from pydantic import Field
 from typing import Any, List
 
+# For custom prompt templates
+from langchain import PromptTemplate
+
 # Load environment variables
 load_dotenv()
 
@@ -41,11 +44,11 @@ logger = logging.getLogger(__name__)
 #                   PDF & CONVERSATION PROCESSING             #
 ###############################################################
 
-# Global configuration: use environment variable for your API key.
 openai_api_key = os.getenv("OPENAI_API_KEY")
 pdf_path = "Stellar.pdf"          # Path to your PDF file
 conversation_dir = "data"         # Directory containing conversation JSON files
-batch_size = 100                  # Process conversation files in batches
+admin_transcripts_dir = "admin_transcripts"  # Directory containing admin transcript text files
+batch_size = 100                  # Process files in batches
 
 def extract_text_from_pdf(pdf_path):
     """Extract text from a single PDF file."""
@@ -79,7 +82,6 @@ def process_pdf_document(pdf_path):
         logger.warning("Not enough content was extracted from the PDF.")
         return None
 
-    # Split text into chunks using a recursive splitter.
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=50,
@@ -211,28 +213,93 @@ def create_conversation_db(conversation_dir, batch_size):
     return convo_db
 
 ###############################################################
+#                     ADMIN TRANSCRIPTS PROCESSING            #
+###############################################################
+
+def process_admin_transcript_file(file_path):
+    """Process a single admin transcript text file."""
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            transcript = f.read()
+        if len(transcript) < 100:
+            return None
+        cleaned_text = clean_text(transcript)
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=500,
+            chunk_overlap=50,
+            separators=["\n\n", "\n", ". "]
+        )
+        chunks = text_splitter.split_text(cleaned_text)
+        documents = [
+            Document(
+                page_content=chunk,
+                metadata={
+                    "source": os.path.basename(file_path),
+                    "source_type": "admin_transcript"
+                }
+            )
+            for chunk in chunks
+        ]
+        return documents
+    except Exception as e:
+        logger.error("Error processing admin transcript file %s: %s", file_path, str(e))
+        return None
+
+def batch_process_admin_transcripts(directory, batch_size=100):
+    """Process admin transcript files in batches."""
+    file_paths = glob.glob(os.path.join(directory, "**/*.txt"), recursive=True)
+    logger.info("Found %d admin transcript files", len(file_paths))
+    all_documents = []
+    total_batches = (len(file_paths) + batch_size - 1) // batch_size
+    for batch_idx in range(total_batches):
+        start_idx = batch_idx * batch_size
+        end_idx = min((batch_idx + 1) * batch_size, len(file_paths))
+        batch_files = file_paths[start_idx:end_idx]
+        logger.info("Processing admin transcript batch %d/%d (%d files)", batch_idx + 1, total_batches, len(batch_files))
+        for file_path in tqdm(batch_files):
+            docs = process_admin_transcript_file(file_path)
+            if docs:
+                all_documents.extend(docs)
+    logger.info("Total admin transcripts processed: %d", len(all_documents))
+    return all_documents
+
+def create_admin_transcripts_db(admin_transcripts_dir, batch_size):
+    """Create a vector database from all admin transcript files."""
+    documents = batch_process_admin_transcripts(admin_transcripts_dir, batch_size)
+    if not documents:
+        logger.warning("No valid admin transcripts found.")
+        return None
+    logger.info("Creating vector database from admin transcripts...")
+    embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
+    admin_db = FAISS.from_documents(documents, embeddings)
+    admin_db.save_local("stellar_admin_transcripts_db")
+    logger.info("Created admin transcripts database with %d entries", len(documents))
+    return admin_db
+
+###############################################################
 #                     HYBRID RETRIEVER SETUP                  #
 ###############################################################
 
-class HybridRetriever(BaseRetriever):
+class HybridRetrieverExtended(BaseRetriever):
     doc_retriever: Any = Field(..., description="Retriever for documents")
     convo_retriever: Any = Field(..., description="Retriever for conversations")
-    doc_weight: float = Field(0.7, description="Weight for the document retriever")
+    admin_retriever: Any = Field(..., description="Retriever for admin transcripts")
+    doc_weight: float = Field(0.5, description="Weight for the document retriever")
+    convo_weight: float = Field(0.3, description="Weight for the conversation retriever")
+    admin_weight: float = Field(0.2, description="Weight for the admin transcripts retriever")
     k: int = Field(5, description="Total number of results to retrieve")
-    
-    def __init__(self, doc_retriever: Any, convo_retriever: Any, doc_weight: float = 0.7, k: int = 5):
-        super().__init__(doc_retriever=doc_retriever, convo_retriever=convo_retriever, doc_weight=doc_weight, k=k)
-        object.__setattr__(self, "convo_weight", 1.0 - doc_weight)
     
     def get_relevant_documents(self, query: str) -> List[Any]:
         doc_k = max(1, int(self.k * self.doc_weight))
-        convo_k = max(1, self.k - doc_k)
+        convo_k = max(1, int(self.k * self.convo_weight))
+        admin_k = max(1, self.k - doc_k - convo_k)
         doc_results = self.doc_retriever.get_relevant_documents(query, k=doc_k) if self.doc_retriever else []
         convo_results = self.convo_retriever.get_relevant_documents(query, k=convo_k) if self.convo_retriever else []
-        return doc_results + convo_results
+        admin_results = self.admin_retriever.get_relevant_documents(query, k=admin_k) if self.admin_retriever else []
+        return doc_results + convo_results + admin_results
 
 def setup_full_rag_system():
-    """Process documents and conversations, and set up the hybrid RAG system."""
+    """Process documents, conversations, and admin transcripts, and set up the hybrid RAG system with a custom prompt."""
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
     
     # Process or load documentation DB
@@ -251,30 +318,63 @@ def setup_full_rag_system():
         logger.info("Loading existing conversation database...")
         convo_db = FAISS.load_local("stellar_conversation_db", embeddings, allow_dangerous_deserialization=True)
     
-    if not doc_db and not convo_db:
+    # Process or load admin transcripts DB
+    if not os.path.exists("stellar_admin_transcripts_db"):
+        logger.info("Processing admin transcript files to create admin transcripts DB...")
+        admin_db = create_admin_transcripts_db(admin_transcripts_dir, batch_size)
+    else:
+        logger.info("Loading existing admin transcripts database...")
+        admin_db = FAISS.load_local("stellar_admin_transcripts_db", embeddings, allow_dangerous_deserialization=True)
+    
+    if not doc_db and not convo_db and not admin_db:
         logger.error("No databases available. Exiting.")
         return None
     
-    logger.info("Creating hybrid retriever...")
+    logger.info("Creating extended hybrid retriever...")
     doc_retriever = doc_db.as_retriever() if doc_db else None
     convo_retriever = convo_db.as_retriever() if convo_db else None
-    hybrid_retriever = HybridRetriever(doc_retriever, convo_retriever)
+    admin_retriever = admin_db.as_retriever() if admin_db else None
+    hybrid_retriever = HybridRetrieverExtended(
+        doc_retriever=doc_retriever,
+        convo_retriever=convo_retriever,
+        admin_retriever=admin_retriever
+    )
     
-    # Initialize LLM (adjust model parameters as needed)
+    # Initialize LLM
     llm = ChatOpenAI(
         temperature=0.2,
         openai_api_key=openai_api_key,
         model_name="chatgpt-4o-latest"
     )
     
+    # Enhanced custom prompt template introducing Scout as part of the Stellar Support Team.
+    template = """
+You are Scout, a friendly and knowledgeable member of the Stellar Support Team on Discord.
+Your role is to help users with queries related to Stellar's products, services, and troubleshooting.
+Use the following context to provide a clear, professional, and helpful answer.
+
+Context:
+{context}
+
+Question:
+{question}
+
+Answer:"""
+    prompt_template = PromptTemplate(
+        input_variables=["context", "question"],
+        template=template
+    )
+    
+    # Create the RetrievalQA chain using the new constructor with custom chain_type_kwargs.
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
         retriever=hybrid_retriever,
-        return_source_documents=True
+        chain_type_kwargs={"prompt": prompt_template},
+        return_source_documents=True,
     )
     
-    logger.info("Hybrid RAG system setup complete.")
+    logger.info("Extended hybrid RAG system setup complete.")
     return qa_chain
 
 def query_rag_system(qa_system, query):
@@ -286,11 +386,9 @@ def query_rag_system(qa_system, query):
     result = qa_system({"query": query})
     answer = result.get("result", "No answer returned.")
     
-    # Log the retrieved documents and final answer.
     retrieved_docs = result.get("source_documents", [])
     logger.info("=== RAG Query Debug Info ===")
     logger.info("Query: %s", query)
-    logger.info("Retrieved Documents:")
     for i, doc in enumerate(retrieved_docs):
         logger.info("Document %d (first 300 characters): %s", i+1, doc.page_content[:300])
     logger.info("Final Answer: %s", answer)
@@ -301,23 +399,21 @@ def query_rag_system(qa_system, query):
 #                         DISCORD BOT                         #
 ###############################################################
 
-# Set up Discord bot with appropriate intents.
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-# Global variable for user conversation history (if you want to store past Q&A)
 user_histories = {}
 
-# Initialize the RAG system (hybrid retriever) on bot startup.
+# Initialize the RAG system on bot startup.
 qa_system = setup_full_rag_system()
 
 @bot.event
 async def on_ready():
     logger.info("Bot connected as %s", bot.user)
-    logger.info("Hybrid RAG system is ready!")
+    logger.info("Extended hybrid RAG system is ready!")
     print(f'Bot connected as {bot.user}')
-    print("Hybrid RAG system is ready!")
+    print("Extended hybrid RAG system is ready!")
 
 @bot.command(name="scout")
 async def scout_command(ctx, *, question=None):
@@ -339,7 +435,6 @@ async def scout_command(ctx, *, question=None):
                 answer = "I'm having trouble generating a response right now. Could you rephrase your question?"
                 logger.warning("Empty answer detected for query: '%s'", question)
             
-            # Update conversation history
             user_histories[user_id].append({"role": "user", "content": question})
             user_histories[user_id].append({"role": "assistant", "content": answer})
             logger.info("Updated conversation history for user %s. Total messages: %d", user_id, len(user_histories[user_id]))
@@ -361,31 +456,28 @@ async def reset_command(ctx):
 
 @bot.command(name="debug")
 async def debug_command(ctx, *, question=None):
-    """Debug mode: shows detailed info about the retrieved documents."""
+    """Debug mode: shows detailed info about the retrieved documents from all databases."""
     if not question:
         await ctx.send("Please provide a question to debug.")
         return
     async with ctx.typing():
         try:
-            embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
-            db = FAISS.load_local("stellar_vector_db", embeddings, allow_dangerous_deserialization=True)
-            docs = db.similarity_search(question, k=2)
+            retrieved_docs = qa_system.retriever.get_relevant_documents(question)
             
             debug_info = "**Debug Information**\n\n"
             debug_info += f"**Query:** {question}\n\n"
-            debug_info += "**Top 2 Retrieved Documents:**\n"
-            for i, doc in enumerate(docs):
-                debug_info += f"Doc {i+1}: {doc.page_content[:250]}...\n\n"
+            debug_info += "**Retrieved Documents (from all databases):**\n"
+            for i, doc in enumerate(retrieved_docs):
+                source = doc.metadata.get("source_type", "unknown")
+                debug_info += f"Doc {i+1} (Source: {source}): {doc.page_content[:250]}...\n\n"
             debug_info += f"**Chat History Length:** {len(user_histories.get(str(ctx.author.id), []))}\n"
             logger.info("Debug command invoked by %s for query: '%s'", ctx.author.name, question)
             logger.info("Debug info: %s", debug_info)
-        
         except Exception as e:
             debug_info = f"Error during debug: {str(e)}\n{traceback.format_exc()}"
             logger.error("Error in debug command: %s", str(e))
             logger.error(traceback.format_exc())
     
-    # Split the message if it's too long
     if len(debug_info) > 1900:
         parts = [debug_info[i:i+1900] for i in range(0, len(debug_info), 1900)]
         for part in parts:

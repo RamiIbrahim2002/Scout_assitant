@@ -203,3 +203,641 @@ Try updating your CSV file and replace **UK** with **GB**, then reattempt the im
 
 Let me know if you need further assistance! 😊
 2025-03-07 22:10:44,856 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 22:50:34,583 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 22:50:34,623 [INFO] Loading existing document database...
+2025-03-07 22:50:34,896 [INFO] Loading faiss with AVX2 support.
+2025-03-07 22:50:34,897 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 22:50:34,898 [INFO] Loading faiss.
+2025-03-07 22:50:34,992 [INFO] Successfully loaded faiss.
+2025-03-07 22:50:35,043 [INFO] Loading existing conversation database...
+2025-03-07 22:50:35,305 [INFO] Processing admin transcript files to create admin transcripts DB...
+2025-03-07 22:50:35,309 [INFO] Found 651 admin transcript files
+2025-03-07 22:50:35,309 [INFO] Processing admin transcript batch 1/7 (100 files)
+2025-03-07 22:50:35,409 [INFO] Processing admin transcript batch 2/7 (100 files)
+2025-03-07 22:50:35,542 [INFO] Processing admin transcript batch 3/7 (100 files)
+2025-03-07 22:50:35,616 [INFO] Processing admin transcript batch 4/7 (100 files)
+2025-03-07 22:50:35,717 [INFO] Processing admin transcript batch 5/7 (100 files)
+2025-03-07 22:50:35,765 [INFO] Processing admin transcript batch 6/7 (100 files)
+2025-03-07 22:50:35,864 [INFO] Processing admin transcript batch 7/7 (51 files)
+2025-03-07 22:50:35,920 [INFO] Total admin transcripts processed: 1628
+2025-03-07 22:50:35,920 [INFO] Creating vector database from admin transcripts...
+2025-03-07 22:50:52,607 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:51:01,252 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:51:05,748 [INFO] Created admin transcripts database with 1628 entries
+2025-03-07 22:51:05,753 [INFO] Creating extended hybrid retriever...
+2025-03-07 22:53:15,213 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 22:53:15,278 [INFO] Loading existing document database...
+2025-03-07 22:53:15,454 [INFO] Loading faiss with AVX2 support.
+2025-03-07 22:53:15,455 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 22:53:15,455 [INFO] Loading faiss.
+2025-03-07 22:53:15,526 [INFO] Successfully loaded faiss.
+2025-03-07 22:53:15,549 [INFO] Loading existing conversation database...
+2025-03-07 22:53:15,723 [INFO] Loading existing admin transcripts database...
+2025-03-07 22:53:15,790 [INFO] Creating extended hybrid retriever...
+2025-03-07 22:53:15,850 [INFO] Extended hybrid RAG system setup complete.
+2025-03-07 22:53:15,852 [INFO] logging in using static token
+2025-03-07 22:53:17,469 [INFO] Shard ID None has connected to Gateway (Session ID: 3e6897668979baa684542bfc6aace724).
+2025-03-07 22:53:19,477 [INFO] Bot connected as Scouty#5100
+2025-03-07 22:53:19,477 [INFO] Extended hybrid RAG system is ready!
+2025-03-07 22:53:44,774 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 22:53:44,854 [INFO] Loading existing document database...
+2025-03-07 22:53:44,999 [INFO] Loading faiss with AVX2 support.
+2025-03-07 22:53:45,000 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 22:53:45,000 [INFO] Loading faiss.
+2025-03-07 22:53:45,032 [INFO] Successfully loaded faiss.
+2025-03-07 22:53:45,047 [INFO] Loading existing conversation database...
+2025-03-07 22:53:45,183 [INFO] Loading existing admin transcripts database...
+2025-03-07 22:53:45,214 [INFO] Creating extended hybrid retriever...
+2025-03-07 22:53:45,259 [INFO] Extended hybrid RAG system setup complete.
+2025-03-07 22:53:45,260 [INFO] logging in using static token
+2025-03-07 22:53:47,123 [INFO] Shard ID None has connected to Gateway (Session ID: 94f2486bca348ccc874f481f589e3685).
+2025-03-07 22:53:49,130 [INFO] Bot connected as Scouty#5100
+2025-03-07 22:53:49,131 [INFO] Extended hybrid RAG system is ready!
+2025-03-07 22:54:37,338 [INFO] Processing request from rami004055: 'How do i cancel my membership?'
+2025-03-07 22:54:38,840 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:54:39,622 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:54:40,167 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:54:43,548 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 22:54:43,620 [INFO] === RAG Query Debug Info ===
+2025-03-07 22:54:43,620 [INFO] Query: How do i cancel my membership?
+2025-03-07 22:54:43,621 [INFO] Retrieved Documents:
+2025-03-07 22:54:43,621 [INFO] Document 1 (first 300 characters): . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode
+2025-03-07 22:54:43,621 [INFO] Document 2 (first 300 characters): . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status of your key •The next renewal date •Your Discord u
+2025-03-07 22:54:43,621 [INFO] Document 3 (first 300 characters): File: transcript_20250217_144403_processed_messages.json
+Topics: general
+
+STAFF: <@419614305571307520> <@&932768408536232037>
+
+CLIENT: Hi, i am playing to cancel but join back later due to some situations in my life rn. Is it possible that when i plan to join back, can i skip the inital fee of 300?
+
+2025-03-07 22:54:43,622 [INFO] Document 4 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 22:54:43,622 [INFO] Document 5 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 22:54:43,622 [INFO] Final Answer: To cancel your membership, follow these steps:
+
+1. **Log in** to your account.
+2. **Go to "Your Orders"** and select **"Manage Membership"**.
+3. **Press "Manage" > "Cancel Membership"**.
+4. This will **stop the automatic renewal** of your subscription.
+
+If you need further assistance, feel free to ask! 😊
+2025-03-07 22:54:43,622 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 22:56:44,789 [INFO] Processing request from rami004055: 'debug'
+2025-03-07 22:56:46,942 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:56:47,758 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:56:48,325 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:56:49,603 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 22:56:49,607 [INFO] === RAG Query Debug Info ===
+2025-03-07 22:56:49,608 [INFO] Query: debug
+2025-03-07 22:56:49,608 [INFO] Retrieved Documents:
+2025-03-07 22:56:49,608 [INFO] Document 1 (first 300 characters): . (ex
+2025-03-07 22:56:49,608 [INFO] Document 2 (first 300 characters): . For example, if you're unsure what each mode does you can go to the Target and there's a breakdown. 3/4/25, 8:08 AM Stellar 8•We always recommend to be on the latest version of Stellar
+2025-03-07 22:56:49,609 [INFO] Document 3 (first 300 characters): File: transcript_20250223_220919_processed_messages.json
+Topics: problem
+
+STAFF: <@281352569723551744> <@&932768408536232037>
+
+CLIENT: <@281352569723551744> hello. are you using request log in or browser?
+
+STAFF: Request login
+
+STAFF: Should I change to browser?
+
+CLIENT: change to browser and see if
+2025-03-07 22:56:49,609 [INFO] Document 4 (first 300 characters): . Try this
+2025-03-07 22:56:49,609 [INFO] Document 5 (first 300 characters): . Try this
+2025-03-07 22:56:49,609 [INFO] Final Answer: Could you clarify what you need help debugging? Are you encountering an issue with a specific program, application, or system? Let me know the details, and I'll do my best to assist you!
+2025-03-07 22:56:49,609 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 4
+2025-03-07 22:57:01,618 [INFO] Conversation history reset for user 1333272221556277311
+2025-03-07 22:57:48,381 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:57:48,387 [INFO] Debug command invoked by rami004055 for query: 'How do i cancel my membership?'
+2025-03-07 22:57:48,387 [INFO] Debug info: **Debug Information**
+
+**Query:** How do i cancel my membership?
+
+**Top 2 Retrieved Documents:**
+Doc 1: . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode...
+
+Doc 2: . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status ...
+
+**Chat History Length:** 0
+
+2025-03-07 22:58:59,351 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 22:58:59,413 [INFO] Loading existing document database...
+2025-03-07 22:58:59,545 [INFO] Loading faiss with AVX2 support.
+2025-03-07 22:58:59,545 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 22:58:59,545 [INFO] Loading faiss.
+2025-03-07 22:58:59,610 [INFO] Successfully loaded faiss.
+2025-03-07 22:58:59,645 [INFO] Loading existing conversation database...
+2025-03-07 22:58:59,937 [INFO] Loading existing admin transcripts database...
+2025-03-07 22:58:59,997 [INFO] Creating extended hybrid retriever...
+2025-03-07 22:59:00,103 [INFO] Extended hybrid RAG system setup complete.
+2025-03-07 22:59:00,107 [INFO] logging in using static token
+2025-03-07 22:59:01,839 [INFO] Shard ID None has connected to Gateway (Session ID: 666bb6067614d67efbb45ef30314f4f3).
+2025-03-07 22:59:03,857 [INFO] Bot connected as Scouty#5100
+2025-03-07 22:59:03,857 [INFO] Extended hybrid RAG system is ready!
+2025-03-07 22:59:14,100 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:59:14,172 [INFO] Debug command invoked by rami004055 for query: 'How do i cancel my membership?'
+2025-03-07 22:59:14,173 [INFO] Debug info: **Debug Information**
+
+**Query:** How do i cancel my membership?
+
+**Top 2 Retrieved Documents:**
+Doc 1: . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode...
+
+Doc 2: . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status ...
+
+Doc 3: . Go to Sessions tab 2. Click on Add Session 3. Session Name: Name your session Email: Enter your account email Costco Sessions3/4/25, 8:08 AM Stellar 155Password: Enter your account password Login Proxy: (Optional) Enter proxy you would like to use ...
+
+Doc 4: . After clicking on the green + sign you'll be prompted to enter a group name and to select a site 3/4/25, 8:08 AM Stellar 507How do I delete a Task Group? In-depth guide on deleting task groups Locate the task group you wish to delete, click on the ...
+
+Doc 5: . If you are using StellarAIO on one of these sites, make sure to click this checkbox and enter the password 3/4/25, 8:08 AM Stellar 361•What is Discount Code? ◦If you would like to use a discount code during checkout, click this checkbox and input t...
+
+**Chat History Length:** 0
+
+2025-03-07 22:59:51,463 [INFO] Processing request from rami004055: 'How do i cancel my membership?'
+2025-03-07 22:59:52,185 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:59:52,694 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:59:53,051 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:59:54,947 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 22:59:54,999 [INFO] === RAG Query Debug Info ===
+2025-03-07 22:59:55,000 [INFO] Query: How do i cancel my membership?
+2025-03-07 22:59:55,000 [INFO] Retrieved Documents:
+2025-03-07 22:59:55,000 [INFO] Document 1 (first 300 characters): . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode
+2025-03-07 22:59:55,001 [INFO] Document 2 (first 300 characters): . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status of your key •The next renewal date •Your Discord u
+2025-03-07 22:59:55,001 [INFO] Document 3 (first 300 characters): File: transcript_20250217_144403_processed_messages.json
+Topics: general
+
+STAFF: <@419614305571307520> <@&932768408536232037>
+
+CLIENT: Hi, i am playing to cancel but join back later due to some situations in my life rn. Is it possible that when i plan to join back, can i skip the inital fee of 300?
+
+2025-03-07 22:59:55,001 [INFO] Document 4 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 22:59:55,001 [INFO] Document 5 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 22:59:55,001 [INFO] Final Answer: To cancel your membership, follow these steps:
+
+1. **Log in** to your account.
+2. **Go to "Your Orders"** and select **"Manage Membership"**.
+3. **Press "Manage" > "Cancel Membership"**.
+4. This will **stop the automatic renewal** of your subscription.
+
+If you have any issues or need further assistance, the Stellar support team is available to help. Let me know if you need anything else!
+2025-03-07 22:59:55,001 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 23:02:15,606 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 23:02:15,639 [INFO] Loading existing document database...
+2025-03-07 23:02:15,757 [INFO] Loading faiss with AVX2 support.
+2025-03-07 23:02:15,757 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 23:02:15,757 [INFO] Loading faiss.
+2025-03-07 23:02:15,788 [INFO] Successfully loaded faiss.
+2025-03-07 23:02:15,802 [INFO] Loading existing conversation database...
+2025-03-07 23:02:15,932 [INFO] Loading existing admin transcripts database...
+2025-03-07 23:02:15,964 [INFO] Creating extended hybrid retriever...
+2025-03-07 23:02:16,000 [INFO] Extended hybrid RAG system setup complete.
+2025-03-07 23:02:16,001 [INFO] logging in using static token
+2025-03-07 23:02:18,598 [INFO] Shard ID None has connected to Gateway (Session ID: 96f811c5dc01a24c861f4f50370dff32).
+2025-03-07 23:02:20,604 [INFO] Bot connected as Scouty#5100
+2025-03-07 23:02:20,605 [INFO] Extended hybrid RAG system is ready!
+2025-03-07 23:03:42,121 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:03:42,564 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:03:42,989 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:03:42,993 [INFO] Debug command invoked by rami004055 for query: 'How do i cancel my membership?'
+2025-03-07 23:03:42,993 [INFO] Debug info: **Debug Information**
+
+**Query:** How do i cancel my membership?
+
+**Retrieved Documents (ALL KNOWLEDGE):**
+Doc 1 (Source: unknown): . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode...
+
+Doc 2 (Source: unknown): . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status ...
+
+Doc 3 (Source: conversation): File: transcript_20250217_144403_processed_messages.json
+Topics: general
+
+STAFF: <@419614305571307520> <@&932768408536232037>
+
+CLIENT: Hi, i am playing to cancel but join back later due to some situations in my life rn. Is it possible that when i pla...
+
+Doc 4 (Source: admin_transcript): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }...
+
+Doc 5 (Source: admin_transcript): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }...
+
+**Chat History Length:** 0
+
+2025-03-07 23:05:49,249 [INFO] Processing request from rami004055: 'How do i cancel my membership?'
+2025-03-07 23:05:50,462 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:05:50,945 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:05:51,442 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:05:53,426 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:05:53,435 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:05:53,436 [INFO] Query: How do i cancel my membership?
+2025-03-07 23:05:53,436 [INFO] Retrieved Documents:
+2025-03-07 23:05:53,436 [INFO] Document 1 (first 300 characters): . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode
+2025-03-07 23:05:53,436 [INFO] Document 2 (first 300 characters): . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status of your key •The next renewal date •Your Discord u
+2025-03-07 23:05:53,436 [INFO] Document 3 (first 300 characters): File: transcript_20250217_144403_processed_messages.json
+Topics: general
+
+STAFF: <@419614305571307520> <@&932768408536232037>
+
+CLIENT: Hi, i am playing to cancel but join back later due to some situations in my life rn. Is it possible that when i plan to join back, can i skip the inital fee of 300?
+
+2025-03-07 23:05:53,436 [INFO] Document 4 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 23:05:53,436 [INFO] Document 5 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 23:05:53,436 [INFO] Final Answer: To cancel your membership, follow these steps:  
+
+1. **Log in** to your account.  
+2. **Go to "Your Orders"** and select **"Manage Membership"**.  
+3. Click on **"Manage" > "Cancel Membership"**.  
+4. This will stop the automatic renewal of your subscription.  
+
+If you have any issues or need assistance, the Stellar support team is available to help. Let me know if you need further clarification! 😊
+2025-03-07 23:05:53,436 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 23:07:02,669 [INFO] Processing request from rami004055: 'how can i refer a friend?'
+2025-03-07 23:07:03,286 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:07:03,693 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:07:07,175 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:07:09,326 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:07:09,327 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:07:09,327 [INFO] Query: how can i refer a friend?
+2025-03-07 23:07:09,327 [INFO] Retrieved Documents:
+2025-03-07 23:07:09,327 [INFO] Document 1 (first 300 characters): . This will use the 3 letter j1g in front of your address •To use 3 letter j1g in the middle of your address, copy =left($G$2, Find(" ", $G$2)) & " " & J1gs!A12 & " " & MID($G$2, FIND(" ", $G$2) + 1, LEN($G$2)) and paste anywhere into G3 and drag sequence down 9.For Columns I to T, most cells should
+2025-03-07 23:07:09,328 [INFO] Document 2 (first 300 characters): . You can follow the Captcha Harvesters guide here. Make sure you're using a Gmail with a One Click status and has a good gmail score inside the Captcha Harvester. Once you've logged into your Gmail and saved the information, the Solvers will open automatically when necessary while running your task
+2025-03-07 23:07:09,328 [INFO] Document 3 (first 300 characters): File: transcript_20250216_024958_processed_messages.json
+Topics: general
+
+STAFF: <@1243089215366107241> <@&932768408536232037>
+
+CLIENT: <@1243089215366107241> Hi friend it is not possible, you can find <#980942201431400498> here and <#815050359932059679> for any recommendations aswell
+
+STAFF: Thank 
+2025-03-07 23:07:09,328 [INFO] Document 4 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:07:09,328 [INFO] Document 5 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:07:09,328 [INFO] Final Answer: To refer a friend, you likely need to use a unique referral link. If your friend joins without using your link, the referral may not be counted. 
+
+Check if there is a referral section in your account or ask support for your personal referral link. Then, share that link with your friend and ensure they sign up using it. 
+
+If you need more details, you can check the relevant channels like <#980942201431400498> or <#815050359932059679> for recommendations. Let me know if you need further help! 😊
+2025-03-07 23:07:09,328 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 4
+2025-03-07 23:08:41,615 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:08:42,663 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:08:43,225 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:08:43,228 [INFO] Debug command invoked by rami004055 for query: 'how can i refer a friend?'
+2025-03-07 23:08:43,229 [INFO] Debug info: **Debug Information**
+
+**Query:** how can i refer a friend?
+
+**Retrieved Documents (ALL KNOWLEDGE):**
+Doc 1 (Source: unknown): . This will use the 3 letter j1g in front of your address •To use 3 letter j1g in the middle of your address, copy =left($G$2, Find(" ", $G$2)) & " " & J1gs!A12 & " " & MID($G$2, FIND(" ", $G$2) + 1, LEN($G$2)) and paste anywhere into G3 and drag seq...
+
+Doc 2 (Source: unknown): . You can follow the Captcha Harvesters guide here. Make sure you're using a Gmail with a One Click status and has a good gmail score inside the Captcha Harvester. Once you've logged into your Gmail and saved the information, the Solvers will open au...
+
+Doc 3 (Source: conversation): File: transcript_20250216_024958_processed_messages.json
+Topics: general
+
+STAFF: <@1243089215366107241> <@&932768408536232037>
+
+CLIENT: <@1243089215366107241> Hi friend it is not possible, you can find <#980942201431400498> here and <#815050359932059...
+
+Doc 4 (Source: admin_transcript): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link...
+
+Doc 5 (Source: admin_transcript): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link...
+
+**Chat History Length:** 4
+
+2025-03-07 23:10:34,536 [INFO] Processing request from rami004055: 'how can i refer a friend?'
+2025-03-07 23:10:35,559 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:10:36,175 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:10:36,482 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:10:38,937 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:10:38,938 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:10:38,938 [INFO] Query: how can i refer a friend?
+2025-03-07 23:10:38,938 [INFO] Retrieved Documents:
+2025-03-07 23:10:38,938 [INFO] Document 1 (first 300 characters): . This will use the 3 letter j1g in front of your address •To use 3 letter j1g in the middle of your address, copy =left($G$2, Find(" ", $G$2)) & " " & J1gs!A12 & " " & MID($G$2, FIND(" ", $G$2) + 1, LEN($G$2)) and paste anywhere into G3 and drag sequence down 9.For Columns I to T, most cells should
+2025-03-07 23:10:38,938 [INFO] Document 2 (first 300 characters): . You can follow the Captcha Harvesters guide here. Make sure you're using a Gmail with a One Click status and has a good gmail score inside the Captcha Harvester. Once you've logged into your Gmail and saved the information, the Solvers will open automatically when necessary while running your task
+2025-03-07 23:10:38,938 [INFO] Document 3 (first 300 characters): File: transcript_20250216_024958_processed_messages.json
+Topics: general
+
+STAFF: <@1243089215366107241> <@&932768408536232037>
+
+CLIENT: <@1243089215366107241> Hi friend it is not possible, you can find <#980942201431400498> here and <#815050359932059679> for any recommendations aswell
+
+STAFF: Thank 
+2025-03-07 23:10:38,938 [INFO] Document 4 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:10:38,938 [INFO] Document 5 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:10:38,938 [INFO] Final Answer: To refer a friend, you likely need to use a unique referral link provided by the platform you're using. If your friend joins without using your link, their referral might not be credited to you.  
+
+Check if there is a referral section in your account settings or ask support for your personal referral link. Then, share that link with your friend and ensure they sign up using it.  
+
+If your friend has already joined without your link, you may need to contact support to see if they can manually credit the referral to you.
+2025-03-07 23:10:38,938 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 6
+2025-03-07 23:12:36,391 [INFO] Processing request from rami004055: 'Hi someone joined that a i referred but didnt use my link'
+2025-03-07 23:12:37,211 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:12:37,929 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:12:38,236 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:12:41,030 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:12:41,036 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:12:41,036 [INFO] Query: Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:12:41,036 [INFO] Retrieved Documents:
+2025-03-07 23:12:41,036 [INFO] Document 1 (first 300 characters): . When a user clicks through to a retailer on TopCashback and makes a purchase, the retailer pays TopCashback a commission, which TopCashback then passes on to the user as cash back
+2025-03-07 23:12:41,036 [INFO] Document 2 (first 300 characters): . The bot did not use your payment info and you must finish the checkout from email. Continue to click the link and continue checkout from email. The automation acts as a cart hold temporarily, so the product is your unless x amount of time has passed without clicking the link and submitting payment
+2025-03-07 23:12:41,036 [INFO] Document 3 (first 300 characters): File: transcript_20250219_084531_processed_messages.json
+Topics: amazon, bot, checkout, captcha, issue, stellar, error, login
+
+STAFF: <@800612933251760160> <@&932768408536232037>
+
+CLIENT: I started running and I know pokemon isn't 24/7 restocks in the UK but by the seems of it over night I've manage
+2025-03-07 23:12:41,036 [INFO] Document 4 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:12:41,036 [INFO] Document 5 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:12:41,036 [INFO] Final Answer: If someone joined but didn't use your referral link, they may not be counted as your referral. You can try the following steps:
+
+1. **Check Referral Terms** – Review the referral program's terms to see if there’s a way to manually claim a referral.
+2. **Contact Support** – Reach out to the platform’s support team and provide details (e.g., the username of the person who joined and proof of your referral).
+3. **Ask the Person to Rejoin** – If possible, ask the person to sign up again using your referral link.
+
+Let me know if you need help with anything else! 😊
+2025-03-07 23:12:41,036 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 8
+2025-03-07 23:12:56,692 [INFO] Conversation history reset for user 1333272221556277311
+2025-03-07 23:13:34,248 [INFO] Processing request from rami004055: 'Hi, can this sku be added to wm ca serverside
+
+6000207469756
+6000206892195
+
+and this as well 🙏'
+2025-03-07 23:13:35,074 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:13:35,783 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:13:36,236 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:13:37,755 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:13:37,756 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:13:37,756 [INFO] Query: Hi, can this sku be added to wm ca serverside
+
+6000207469756
+6000206892195
+
+and this as well 🙏
+2025-03-07 23:13:37,756 [INFO] Retrieved Documents:
+2025-03-07 23:13:37,756 [INFO] Document 1 (first 300 characters): . •SKU ◦A SKU is an item-specific identification ID that is special only to a single item. Walmart CA SKUs tend to be near the end of the link. (ex. and-the-legend-of-the-ten-rings-6-inch-collectible-shang-chi-action- figure-toy-for-age-4-and-up-multi/6000202418918, the SKU is 6000202418918). ENSURE
+2025-03-07 23:13:37,756 [INFO] Document 2 (first 300 characters): . If the SKU is not there in the URL, you can go to the product page, navigate to Specifications tab and there's a section there with a 5 or 6 digit set of numbers •What is a good Quantity to use? ◦It's best to check with your cookgroup since different items have different quantity limits but you ca
+2025-03-07 23:13:37,756 [INFO] Document 3 (first 300 characters): File: support_transcript_20250228_080430_processed_messages.json
+Topics: general
+
+STAFF: <@372941782444539907> <@&932768408536232037>
+
+CLIENT: I would like to request this SKU to be added to server side monitoring in Walmart, it's a 5090 MSI Ventus Card.    My monitoring task take 60 seconds to chec
+2025-03-07 23:13:37,756 [INFO] Document 4 (first 300 characters): [ { "id": "1344529248312102974", "content": "<@775987781335253032>", "role": "staff" }, { "id": "1344531963851313152", "content": "Hi <@775987781335253032> , \n\nThanks for reaching out. We've noted your request to add the Walmart CA SKU 1ESM8Q22BRHC for the \"Pokémon Crown Zenith Sea & Sky Premium 
+2025-03-07 23:13:37,756 [INFO] Document 5 (first 300 characters): [ { "id": "1344529248312102974", "content": "<@775987781335253032>", "role": "staff" }, { "id": "1344531963851313152", "content": "Hi <@775987781335253032> , \n\nThanks for reaching out. We've noted your request to add the Walmart CA SKU 1ESM8Q22BRHC for the \"Pokémon Crown Zenith Sea & Sky Premium 
+2025-03-07 23:13:37,756 [INFO] Final Answer: Hi! I recommend opening a support ticket with the team so they can properly log your request and forward it to the developers. Based on previous responses, they will update the server-side monitoring list and notify you once it's added. Let me know if you need help with anything else! 😊
+2025-03-07 23:13:37,756 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 23:17:02,340 [ERROR] Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "rami" is not found
+2025-03-07 23:22:53,430 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 23:22:53,444 [INFO] Loading existing document database...
+2025-03-07 23:22:53,476 [INFO] Loading faiss with AVX2 support.
+2025-03-07 23:22:53,476 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 23:22:53,476 [INFO] Loading faiss.
+2025-03-07 23:22:53,497 [INFO] Successfully loaded faiss.
+2025-03-07 23:22:53,502 [INFO] Loading existing conversation database...
+2025-03-07 23:22:53,579 [INFO] Loading existing admin transcripts database...
+2025-03-07 23:22:53,596 [INFO] Creating extended hybrid retriever...
+2025-03-07 23:26:01,450 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 23:26:01,462 [INFO] Loading existing document database...
+2025-03-07 23:26:01,494 [INFO] Loading faiss with AVX2 support.
+2025-03-07 23:26:01,494 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 23:26:01,494 [INFO] Loading faiss.
+2025-03-07 23:26:01,507 [INFO] Successfully loaded faiss.
+2025-03-07 23:26:01,513 [INFO] Loading existing conversation database...
+2025-03-07 23:26:01,588 [INFO] Loading existing admin transcripts database...
+2025-03-07 23:26:01,600 [INFO] Creating extended hybrid retriever...
+2025-03-07 23:26:01,612 [INFO] Extended hybrid RAG system setup complete.
+2025-03-07 23:26:01,613 [INFO] logging in using static token
+2025-03-07 23:26:03,256 [INFO] Shard ID None has connected to Gateway (Session ID: 5cfc847bbb70b94e6156abc9342ebd45).
+2025-03-07 23:26:05,262 [INFO] Bot connected as Scouty#5100
+2025-03-07 23:26:05,263 [INFO] Extended hybrid RAG system is ready!
+2025-03-07 23:29:37,995 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 23:29:38,008 [INFO] Loading existing document database...
+2025-03-07 23:29:38,038 [INFO] Loading faiss with AVX2 support.
+2025-03-07 23:29:38,038 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 23:29:38,038 [INFO] Loading faiss.
+2025-03-07 23:29:38,051 [INFO] Successfully loaded faiss.
+2025-03-07 23:29:38,056 [INFO] Loading existing conversation database...
+2025-03-07 23:29:38,120 [INFO] Loading existing admin transcripts database...
+2025-03-07 23:29:38,131 [INFO] Creating extended hybrid retriever...
+2025-03-07 23:29:38,145 [INFO] Extended hybrid RAG system setup complete.
+2025-03-07 23:29:38,146 [INFO] logging in using static token
+2025-03-07 23:29:39,776 [INFO] Shard ID None has connected to Gateway (Session ID: f5151c7d022ced59879f0b7d5d97e5c4).
+2025-03-07 23:29:41,782 [INFO] Bot connected as Scouty#5100
+2025-03-07 23:29:41,783 [INFO] Extended hybrid RAG system is ready!
+2025-03-07 23:29:50,301 [INFO] Processing request from rami004055: 'Hi, can this sku be added to wm ca serverside
+
+6000207469756
+6000206892195
+
+and this as well 🙏'
+2025-03-07 23:29:52,986 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:29:53,805 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:29:54,324 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:29:56,262 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:29:56,271 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:29:56,271 [INFO] Query: Hi, can this sku be added to wm ca serverside
+
+6000207469756
+6000206892195
+
+and this as well 🙏
+2025-03-07 23:29:56,271 [INFO] Document 1 (first 300 characters): . •SKU ◦A SKU is an item-specific identification ID that is special only to a single item. Walmart CA SKUs tend to be near the end of the link. (ex. and-the-legend-of-the-ten-rings-6-inch-collectible-shang-chi-action- figure-toy-for-age-4-and-up-multi/6000202418918, the SKU is 6000202418918). ENSURE
+2025-03-07 23:29:56,271 [INFO] Document 2 (first 300 characters): . If the SKU is not there in the URL, you can go to the product page, navigate to Specifications tab and there's a section there with a 5 or 6 digit set of numbers •What is a good Quantity to use? ◦It's best to check with your cookgroup since different items have different quantity limits but you ca
+2025-03-07 23:29:56,271 [INFO] Document 3 (first 300 characters): File: support_transcript_20250228_080430_processed_messages.json
+Topics: general
+
+STAFF: <@372941782444539907> <@&932768408536232037>
+
+CLIENT: I would like to request this SKU to be added to server side monitoring in Walmart, it's a 5090 MSI Ventus Card.    My monitoring task take 60 seconds to chec
+2025-03-07 23:29:56,271 [INFO] Document 4 (first 300 characters): [ { "id": "1344529248312102974", "content": "<@775987781335253032>", "role": "staff" }, { "id": "1344531963851313152", "content": "Hi <@775987781335253032> , \n\nThanks for reaching out. We've noted your request to add the Walmart CA SKU 1ESM8Q22BRHC for the \"Pokémon Crown Zenith Sea & Sky Premium 
+2025-03-07 23:29:56,271 [INFO] Document 5 (first 300 characters): [ { "id": "1344529248312102974", "content": "<@775987781335253032>", "role": "staff" }, { "id": "1344531963851313152", "content": "Hi <@775987781335253032> , \n\nThanks for reaching out. We've noted your request to add the Walmart CA SKU 1ESM8Q22BRHC for the \"Pokémon Crown Zenith Sea & Sky Premium 
+2025-03-07 23:29:56,271 [INFO] Final Answer: Hi!  
+
+Thanks for reaching out. I've noted your request to add the Walmart CA SKUs **6000207469756** and **6000206892195** to our server-side monitoring.  
+
+I'll forward this to our team, and we'll update you once they've been added. Let me know if you need anything else! 😊
+2025-03-07 23:29:56,271 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 23:30:29,019 [INFO] Processing request from rami004055: 'how can i refer a friend?'
+2025-03-07 23:30:29,823 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:30:30,211 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:30:30,707 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:30:32,613 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:30:32,614 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:30:32,614 [INFO] Query: how can i refer a friend?
+2025-03-07 23:30:32,614 [INFO] Document 1 (first 300 characters): . This will use the 3 letter j1g in front of your address •To use 3 letter j1g in the middle of your address, copy =left($G$2, Find(" ", $G$2)) & " " & J1gs!A12 & " " & MID($G$2, FIND(" ", $G$2) + 1, LEN($G$2)) and paste anywhere into G3 and drag sequence down 9.For Columns I to T, most cells should
+2025-03-07 23:30:32,615 [INFO] Document 2 (first 300 characters): . You can follow the Captcha Harvesters guide here. Make sure you're using a Gmail with a One Click status and has a good gmail score inside the Captcha Harvester. Once you've logged into your Gmail and saved the information, the Solvers will open automatically when necessary while running your task
+2025-03-07 23:30:32,615 [INFO] Document 3 (first 300 characters): File: transcript_20250216_024958_processed_messages.json
+Topics: general
+
+STAFF: <@1243089215366107241> <@&932768408536232037>
+
+CLIENT: <@1243089215366107241> Hi friend it is not possible, you can find <#980942201431400498> here and <#815050359932059679> for any recommendations aswell
+
+STAFF: Thank 
+2025-03-07 23:30:32,615 [INFO] Document 4 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:30:32,615 [INFO] Document 5 (first 300 characters): [ { "id": "1328112083740397664", "content": "<@719629989615763526>", "role": "staff" }, { "id": "1328112164451520583", "content": "Hi someone joined that a i referred but didnt use my link
+2025-03-07 23:30:32,615 [INFO] Final Answer: You can refer a friend by sharing your unique referral link with them. Make sure they use your link when signing up to ensure that the referral is properly tracked. If they joined without using your link, unfortunately, the referral may not be credited to you. If you need further assistance, feel free to check the relevant referral program details or reach out to support. Let me know if you have any other questions! 😊
+2025-03-07 23:30:32,615 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 4
+2025-03-07 23:30:52,057 [INFO] Processing request from rami004055: 'How do i cancel my membership?'
+2025-03-07 23:30:52,582 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:30:52,993 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:30:53,605 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:30:55,551 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:30:55,552 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:30:55,553 [INFO] Query: How do i cancel my membership?
+2025-03-07 23:30:55,553 [INFO] Document 1 (first 300 characters): . If you decide to cancel your entry in your account, just input Product SKU and run cancel- entry mode
+2025-03-07 23:30:55,553 [INFO] Document 2 (first 300 characters): . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status of your key •The next renewal date •Your Discord u
+2025-03-07 23:30:55,553 [INFO] Document 3 (first 300 characters): File: transcript_20250217_144403_processed_messages.json
+Topics: general
+
+STAFF: <@419614305571307520> <@&932768408536232037>
+
+CLIENT: Hi, i am playing to cancel but join back later due to some situations in my life rn. Is it possible that when i plan to join back, can i skip the inital fee of 300?
+
+2025-03-07 23:30:55,553 [INFO] Document 4 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 23:30:55,553 [INFO] Document 5 (first 300 characters): . ( ) and press > Manage > Cancel Membership\n\nThis will stop the automatic renewal.\n\nHow comes your looking to cancel? We're a friendly team here at Stellar and if you have any issues whilst using the bot we are happy to help", "role": "client" }, { "id": "1336079414596862065", "content": "<@560
+2025-03-07 23:30:55,553 [INFO] Final Answer: You can cancel your membership by following these steps:  
+
+1. Log in to your account using Discord.  
+2. Click on the drop-down arrow in the top right corner and select **My Orders**.  
+3. Navigate to **Your Orders > Manage Membership**.  
+4. Click on **Manage > Cancel Membership**.  
+
+This will stop the automatic renewal of your subscription. If you have any issues or need further assistance, feel free to ask—we're happy to help! 😊
+2025-03-07 23:30:55,553 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 6
+2025-03-07 23:31:39,633 [INFO] Processing request from rami004055: 'Hello there, can you tell me please what monitoring status 520 means for walmart'
+2025-03-07 23:31:40,286 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:31:41,105 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:31:41,775 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:31:43,679 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:31:43,680 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:31:43,680 [INFO] Query: Hello there, can you tell me please what monitoring status 520 means for walmart
+2025-03-07 23:31:43,680 [INFO] Document 1 (first 300 characters): . In this case with GameStop, your Monitor mode tasks will notify your running Checkout watch tasks when that specific product has restocked
+2025-03-07 23:31:43,680 [INFO] Document 2 (first 300 characters): . 3/4/25, 8:08 AM Stellar 573When Stellar's serverside monitor or your monitor task picks up that something is in stock in the specific tag you entered, your task will auto switch to that SKU for 30 minutes then go back to the original Tag 3/4/25, 8:08 AM Stellar 574What is Serverside monitoring? Wh
+2025-03-07 23:31:43,680 [INFO] Document 3 (first 300 characters): File: transcript_20250211_195130_processed_messages.json
+Topics: bot
+
+STAFF: <@318529332916125696> <@&932768408536232037>
+
+CLIENT: Hello, today walmart had a drop and none of the 10 monitors I had pinged. My phone pinged through an app I use I opened link and product was still in stock. Watched moni
+2025-03-07 23:31:43,680 [INFO] Document 4 (first 300 characters): [ { "id": "1344529248312102974", "content": "<@775987781335253032>", "role": "staff" }, { "id": "1344531963851313152", "content": "Hi <@775987781335253032> , \n\nThanks for reaching out. We've noted your request to add the Walmart CA SKU 1ESM8Q22BRHC for the \"Pokémon Crown Zenith Sea & Sky Premium 
+2025-03-07 23:31:43,680 [INFO] Document 5 (first 300 characters): [ { "id": "1344529248312102974", "content": "<@775987781335253032>", "role": "staff" }, { "id": "1344531963851313152", "content": "Hi <@775987781335253032> , \n\nThanks for reaching out. We've noted your request to add the Walmart CA SKU 1ESM8Q22BRHC for the \"Pokémon Crown Zenith Sea & Sky Premium 
+2025-03-07 23:31:43,680 [INFO] Final Answer: Hi! Monitoring status 520 for Walmart typically indicates an unknown error or an issue with the request being sent to Walmart's servers. This could be caused by a temporary server issue, a problem with your proxies, or Walmart blocking the request.  
+
+To troubleshoot:  
+- Try switching to different proxies (ISP or residential) and see if the issue persists.  
+- Check if Walmart is experiencing any downtime or changes to their site.  
+- Lower your monitor delay slightly to see if it improves detection.  
+
+If the issue continues, let us know, and we can assist further! 😊
+2025-03-07 23:31:43,680 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 8
+2025-03-07 23:32:56,078 [INFO] Processing request from rami004055: 'Which version of StellarAIO are you on? > 3.8.93 I 8.28.389
+Which site/module are you inquiring about? > Walmart CA
+Which mode(s) are you using? > account mode
+Which kind of proxies are you using? > 1ESM8Q22BRHC
+Which error/issue are you running into? > Card flagged issue, not sure what to do. is it an account error ?'
+2025-03-07 23:32:56,896 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:32:57,510 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:32:57,923 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:33:03,143 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:33:03,147 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:33:03,147 [INFO] Query: Which version of StellarAIO are you on? > 3.8.93 I 8.28.389
+Which site/module are you inquiring about? > Walmart CA
+Which mode(s) are you using? > account mode
+Which kind of proxies are you using? > 1ESM8Q22BRHC
+Which error/issue are you running into? > Card flagged issue, not sure what to do. is it an account error ?
+2025-03-07 23:33:03,147 [INFO] Document 1 (first 300 characters): . You can select Manually to enter the codes in manually or use a 3rd party service like TextVerified or SMS Activate Error Message Cause Solution PX Block | Rotating ProxyPX detected and blocked your proxyLet tasks run or try different proxies (type, pool, provider etc.)Common Errors and Fixes3/4/2
+2025-03-07 23:33:03,148 [INFO] Document 2 (first 300 characters): . If your proxies are getting flagged/banned, increase delays •What is Account? 3/4/25, 8:08 AM Stellar 339◦Select an accountfrom the dropdown options. You need to add your accounts following these steps •What is Captcha Provider? ◦This site has captcha checkpoints, meaning captchas will need to be 
+2025-03-07 23:33:03,148 [INFO] Document 3 (first 300 characters): File: transcript_20250210_122834_processed_messages.json
+Topics: stellar, error, issue, proxy
+
+STAFF: <@581334861311246359> <@&932768408536232037>
+
+CLIENT: I'm just looking for some insight, this is the first time I've purchased stellar so I'm not sure if I'm doing something wrong, but Walmart CA do
+2025-03-07 23:33:03,148 [INFO] Document 4 (first 300 characters): . after phone call you can close if satisfied", "role": "staff" }, { "id": "1336085172839383164", "content": "I was wondering where I could generate the 16 letter passkey from gmail so I can create my new iMap?", "role": "client" }, { "id": "1336085345611026534", "content": " "role": "staff" }, { "i
+2025-03-07 23:33:03,149 [INFO] Document 5 (first 300 characters): . after phone call you can close if satisfied", "role": "staff" }, { "id": "1336085172839383164", "content": "I was wondering where I could generate the 16 letter passkey from gmail so I can create my new iMap?", "role": "client" }, { "id": "1336085345611026534", "content": " "role": "staff" }, { "i
+2025-03-07 23:33:03,149 [INFO] Final Answer: It looks like you're encountering a temporary profile/card ban while running Walmart CA tasks. This issue has been reported by multiple users, and currently, there is no definitive solution. Walmart's security settings can be quite strict, which may be causing your card to get flagged.  
+
+Here are a few things you can try:  
+- Switch to a different payment method or card.  
+- Try running tasks with increased delays to reduce detection.  
+- If using guest checkout, consider trying an account-based checkout instead.  
+- Experiment with different proxy providers or types (residential vs. ISP).  
+
+If the issue persists, you may need to wait until Walmart's security settings ease up or until further updates are provided by the Stellar team. Let us know if you need any further assistance! 🚀
+2025-03-07 23:33:03,150 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 10
+2025-03-07 23:34:38,125 [INFO] Processing request from rami004055: 'When are restocks?'
+2025-03-07 23:34:39,296 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:34:40,014 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:34:40,625 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:34:42,576 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:34:42,577 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:34:42,577 [INFO] Query: When are restocks?
+2025-03-07 23:34:42,577 [INFO] Document 1 (first 300 characters): . Once an event is activated, the status will change to Active and your product is now being monitored with Stellars lightning fast monitors 3/4/25, 8:08 AM Stellar 5804.While your event is Active and a restock has happened, a new task group will automatically be created and tasks will automatically
+2025-03-07 23:34:42,577 [INFO] Document 2 (first 300 characters): . When a product restocks, this same task will atc and checkout ▪Watch tasks are "watching" your Monitor Mode tasks waiting for a product you're running for to restock
+2025-03-07 23:34:42,577 [INFO] Document 3 (first 300 characters): File: support_transcript_20250227_132039_processed_messages.json
+Topics: general
+
+STAFF: <@830460173453099018> <@&932768408536232037>
+
+CLIENT: 7 am
+10:09 am
+10:22 am est
+
+when suprised restocked
+
+STAFF: already updated, just OOS.
+2025-03-07 23:34:42,577 [INFO] Document 4 (first 300 characters): . We've been crushing all restocks lately!", "role": "client" }, { "id": "1341965637034971227", "content": "there is a group talking about quarterly for 120?", "role": "staff" }, { "id": "1341983908849389589", "content": "send link! <@303022759427047425>", "role": "client" }, { "id": "13419845464421
+2025-03-07 23:34:42,577 [INFO] Document 5 (first 300 characters): . We've been crushing all restocks lately!", "role": "client" }, { "id": "1341965637034971227", "content": "there is a group talking about quarterly for 120?", "role": "staff" }, { "id": "1341983908849389589", "content": "send link! <@303022759427047425>", "role": "client" }, { "id": "13419845464421
+2025-03-07 23:34:42,577 [INFO] Final Answer: Restocks can happen at any time, and Stellar's lightning-fast monitors will automatically detect them when they occur. Once an event is activated, your product is being monitored, and if a restock happens, a new task group will be created and started automatically to add the product to the cart and proceed to checkout. 
+
+You'll receive a notification via Discord webhook when Stellar detects a restock and when an Automation Task group is created and started. Keep an eye on your notifications to stay updated on restocks in real time! Let me know if you need any further clarification. 😊
+2025-03-07 23:34:42,577 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 12
+2025-03-07 23:37:19,657 [INFO] Processing request from rami004055: 'hello i have updated my payment info for my membership. i got a new card and noticed i didnt update it when i went to log into the discord. please let m know what to do thank you very much
+Hello I noticed I can’t log into the discord server, I checked my email and it said the payment was unsuccessful. I have gotten and new debit card and can’t add it the my dashboard. Please let me know what to do as I’ve been a loyal customer since the beginning of stellar. Please let me know what to do.
+I have put the right info in my whop account for you to charge me again. Please if possible can you charge my card again so I can’t access my account.'
+2025-03-07 23:37:20,640 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:37:21,190 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:37:21,804 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 23:37:24,980 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 23:37:24,984 [INFO] === RAG Query Debug Info ===
+2025-03-07 23:37:24,984 [INFO] Query: hello i have updated my payment info for my membership. i got a new card and noticed i didnt update it when i went to log into the discord. please let m know what to do thank you very much
+Hello I noticed I can’t log into the discord server, I checked my email and it said the payment was unsuccessful. I have gotten and new debit card and can’t add it the my dashboard. Please let me know what to do as I’ve been a loyal customer since the beginning of stellar. Please let me know what to do.
+I have put the right info in my whop account for you to charge me again. Please if possible can you charge my card again so I can’t access my account.
+2025-03-07 23:37:24,984 [INFO] Document 1 (first 300 characters): . Once you login with your Discord, go to the top right corner drop down arrow and click on My Orders 3/4/25, 8:08 AM Stellar 234.Now you'll have access to: •View your Stellar key •The purchase price of the key •The monthly renewal price •The status of your key •The next renewal date •Your Discord u
+2025-03-07 23:37:24,985 [INFO] Document 2 (first 300 characters): . Keep in mind there's not always a cart hold so you may not checkout successfully ◦A checkout Link will be sent to your via Discord webhook to click on and proceed to checkout •What's an Account? ◦Accounts are required for ASOS and you can follow the step by step instructions here to add your ASOS 
+2025-03-07 23:37:24,985 [INFO] Document 3 (first 300 characters): File: support_transcript_20250227_165608_processed_messages.json
+Topics: login, stellar
+
+STAFF: <@1033446783348650055> <@&932768408536232037>
+
+CLIENT: I need help finding my stellar login key please. Can't find on whop anywherew
+
+CLIENT: It just keeps telling me to link my account to discord which I
+2025-03-07 23:37:24,985 [INFO] Document 4 (first 300 characters): [ { "id": "1327445402768900170", "content": "<@338780417681522689>", "role": "staff" }, { "id": "1327450256283275372", "content": "I tried the method of going to transfer membership, then it gave me a link. I logged into the correct whop account, typed in the link, but it then took me to the credit 
+2025-03-07 23:37:24,985 [INFO] Document 5 (first 300 characters): [ { "id": "1327445402768900170", "content": "<@338780417681522689>", "role": "staff" }, { "id": "1327450256283275372", "content": "I tried the method of going to transfer membership, then it gave me a link. I logged into the correct whop account, typed in the link, but it then took me to the credit 
+2025-03-07 23:37:24,985 [INFO] Final Answer: It looks like your payment was unsuccessful due to an outdated card, and you need to update your payment method to regain access to the Discord server. Here’s what you can do:
+
+1. **Update Your Payment Method:**
+   - Log into your **Whop** account.
+   - Navigate to **Your Orders** > **Manage Membership**.
+   - Update your payment details with your new debit card.
+
+2. **Retry the Payment:**
+   - Once your payment method is updated, Whop should attempt to charge your card again automatically.
+   - If the charge does not go through, you may need to manually re-subscribe or contact Whop support for assistance.
+
+3. **Check Your Discord Access:**
+   - After a successful payment, your access to the Stellar Discord should be restored.
+   - If you still can’t log in, try unlinking and relinking your Discord account in Whop.
+
+If you continue to have issues, feel free to reach out, and we’ll be happy to assist further! 🚀
+2025-03-07 23:37:24,985 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 14
