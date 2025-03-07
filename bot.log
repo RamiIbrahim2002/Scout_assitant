@@ -1,0 +1,205 @@
+2025-03-07 01:18:49,155 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 01:18:49,284 [INFO] Loading existing document database...
+2025-03-07 01:18:49,608 [INFO] Loading faiss with AVX2 support.
+2025-03-07 01:18:49,608 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 01:18:49,609 [INFO] Loading faiss.
+2025-03-07 01:18:49,693 [INFO] Successfully loaded faiss.
+2025-03-07 01:18:49,741 [INFO] Loading existing conversation database...
+2025-03-07 01:18:50,084 [INFO] Creating hybrid retriever...
+2025-03-07 01:18:50,189 [INFO] Hybrid RAG system setup complete.
+2025-03-07 01:18:50,193 [INFO] logging in using static token
+2025-03-07 01:18:52,019 [INFO] Shard ID None has connected to Gateway (Session ID: f58ef073e5c5d2ec691325582cd387b3).
+2025-03-07 01:18:54,026 [INFO] Bot connected as Scouty#5100
+2025-03-07 01:18:54,027 [INFO] Hybrid RAG system is ready!
+2025-03-07 01:19:37,220 [INFO] Processing request from rami004055: 'how can i refer a friend?'
+2025-03-07 01:19:39,170 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 01:19:39,887 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 01:19:41,622 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 01:19:41,680 [INFO] === RAG Query Debug Info ===
+2025-03-07 01:19:41,680 [INFO] Query: how can i refer a friend?
+2025-03-07 01:19:41,680 [INFO] Retrieved Documents:
+2025-03-07 01:19:41,681 [INFO] Document 1 (first 300 characters): . This will use the 3 letter j1g in front of your address •To use 3 letter j1g in the middle of your address, copy =left($G$2, Find(" ", $G$2)) & " " & J1gs!A12 & " " & MID($G$2, FIND(" ", $G$2) + 1, LEN($G$2)) and paste anywhere into G3 and drag sequence down 9.For Columns I to T, most cells should
+2025-03-07 01:19:41,681 [INFO] Document 2 (first 300 characters): . You can follow the Captcha Harvesters guide here. Make sure you're using a Gmail with a One Click status and has a good gmail score inside the Captcha Harvester. Once you've logged into your Gmail and saved the information, the Solvers will open automatically when necessary while running your task
+2025-03-07 01:19:41,681 [INFO] Document 3 (first 300 characters): . Setting Up Forwarding: 1.Login to the email account you want to forward: •For Gmail: ◦Go to Settings > Forwarding and POP/IMAP > Add a Forwarding Address. ◦Enter your master email address. ◦Confirm the forwarding request by clicking the link sent to your master email. ◦Select Forward a copy of inc
+2025-03-07 01:19:41,681 [INFO] Document 4 (first 300 characters): File: transcript_20250216_024958_processed_messages.json
+Topics: general
+
+STAFF: <@1243089215366107241> <@&932768408536232037>
+
+CLIENT: <@1243089215366107241> Hi friend it is not possible, you can find <#980942201431400498> here and <#815050359932059679> for any recommendations aswell
+
+STAFF: Thank 
+2025-03-07 01:19:41,681 [INFO] Document 5 (first 300 characters): File: transcript_20250211_192332_processed_messages.json
+Topics: general
+
+STAFF: <@771546952071905301> <@&932768408536232037>
+
+CLIENT: using 2 monitors and 1 normal
+
+STAFF: <@771546952071905301> hey friend let me setup and test; can you send task log [blue clipboard]
+
+CLIENT: how do i send it? the b
+2025-03-07 01:19:41,681 [INFO] Final Answer: I don't have specific details on how to refer a friend. However, you can check any referral programs or guidelines provided by the platform or service you're using. If you're referring to a specific service, I recommend checking their official website or support channels for referral instructions. Let me know if you need help with anything else!
+2025-03-07 01:19:41,681 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2
+2025-03-07 01:28:09,844 [INFO] Processing request from rami004055: 'Can i get a refund for my key? I wanted to buy another instance but didnt’t know i couldve bought another instance with the same account. I bought this ectra instance on another account can i pls get a refund ill buy another instance on my other account. I honestly didnt know i couldve bought one on my other accounts.'
+2025-03-07 01:28:16,092 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 01:28:16,983 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 01:28:19,033 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 01:28:19,054 [INFO] === RAG Query Debug Info ===
+2025-03-07 01:28:19,056 [INFO] Query: Can i get a refund for my key? I wanted to buy another instance but didnt’t know i couldve bought another instance with the same account. I bought this ectra instance on another account can i pls get a refund ill buy another instance on my other account. I honestly didnt know i couldve bought one on my other accounts.
+2025-03-07 01:28:19,059 [INFO] Retrieved Documents:
+2025-03-07 01:28:19,061 [INFO] Document 1 (first 300 characters): . •WTB - Want to buy. •WTS - Want to sell. •WTT - Want to trade.3/4/25, 8:08 AM Stellar 21Managing Your Account3/4/25, 8:08 AM Stellar 22How do I access and manage my key? What is the StellarAIO Dashboard? How to Access and Manage My Account/Key? Your key and all things renewal are all found on the 
+2025-03-07 01:28:19,064 [INFO] Document 2 (first 300 characters): . ◦If you would like to test out Serverside, you can have either a Experimental or Special Task running for SKU: B07PDHT5XP •Sessions are used for Amazon.ca, this will consist of your individual amazon accounts that you will need to create under the Sessions tab on the left hand side of Stellar. The
+2025-03-07 01:28:19,068 [INFO] Document 3 (first 300 characters): . ◦2FA Authenticator Key - Please refer to this guide to create a 2FA Key •Do you think you are soft banned on Amazon.ca? Log into your account, and if you can click on "Your Account" after logging in and you do not see any "Amazon Dogs" you are not soft banned. It could be an error from the softwar
+2025-03-07 01:28:19,072 [INFO] Document 4 (first 300 characters): File: transcript_20250210_113734_processed_messages.json
+Topics: stellar
+
+STAFF: <@628290017684488192> <@&932768408536232037>
+
+CLIENT: Hi i would like to know if you guys allow me to buy a second instance and how much would it cost
+
+STAFF: hello. have you tried this link yet?
+
+STAFF: https://discord
+2025-03-07 01:28:19,073 [INFO] Document 5 (first 300 characters): File: transcript_20250210_135419_processed_messages.json
+Topics: stellar
+
+STAFF: <@628290017684488192> <@&932768408536232037>
+
+CLIENT: Hi i would like to know if you guys allow me to buy a second instance and how much would it cost
+
+STAFF: hello. have you tried this link yet?
+
+STAFF: https://discord
+2025-03-07 01:28:19,074 [INFO] Final Answer: There is no information available regarding StellarAIO's refund policy for mistakenly purchased instances on a different account. I recommend reaching out to StellarAIO support directly through their Discord or official support channels to explain your situation and request a refund. They will be able to provide you with the most accurate response regarding their refund policy.
+2025-03-07 01:28:19,074 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 4
+2025-03-07 01:33:22,152 [INFO] Processing request from rami004055: 'The Stellar Program is not opening for me on desktop'
+2025-03-07 01:33:23,278 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 01:33:24,394 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 01:33:30,652 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 01:33:30,658 [INFO] === RAG Query Debug Info ===
+2025-03-07 01:33:30,659 [INFO] Query: The Stellar Program is not opening for me on desktop
+2025-03-07 01:33:30,659 [INFO] Retrieved Documents:
+2025-03-07 01:33:30,659 [INFO] Document 1 (first 300 characters): . Once done so a browser will appear where you can navigate to your mp3 file which can be selected in order to import into StellarAIO If the mp3 has an icon on your desktop screen then find the mp3 in the Desktops category of the browser as shown above Or if the mp3 is downloaded into your desktop's
+2025-03-07 01:33:30,659 [INFO] Document 2 (first 300 characters): . To get your key, head over to the dashboard. Windows Download Mac Download3/4/25, 8:08 AM Stellar 301.Navigate towards the StellarAIO discord server 2.Click on the #change-log channel 3.Look for the most recent Mac update 4.Click on the link which will direct you to a WeTransfer download site 5.Cl
+2025-03-07 01:33:30,659 [INFO] Document 3 (first 300 characters): . It's ready to be set to a new machine 3/4/25, 8:08 AM Stellar 27Installation/Uninstallation3/4/25, 8:08 AM Stellar 28How do I update Stellar? (PC and Mac) Stellar will automatically attempt to update when StellarAIO is open. If there's any issues updating Stellar to the latest version you can try 
+2025-03-07 01:33:30,660 [INFO] Document 4 (first 300 characters): File: transcript_20250223_194446_processed_messages.json
+Topics: stellar
+
+STAFF: <@534115122097029141> <@&932768408536232037>
+
+CLIENT: Hey, I just purchased a virtual server, and I downloaded stellar on it. But when I open stellar, it does not open the application. I see stellar aio in the task mana
+2025-03-07 01:33:30,660 [INFO] Document 5 (first 300 characters): File: transcript_20250223_185236_processed_messages.json
+Topics: stellar
+
+STAFF: <@534115122097029141> <@&932768408536232037>
+
+CLIENT: Hey, I just purchased a virtual server, and I downloaded stellar on it. But when I open stellar, it does not open the application. I see stellar aio in the task mana
+2025-03-07 01:33:30,660 [INFO] Final Answer: If StellarAIO is not opening on your desktop, try the following troubleshooting steps:
+
+1. **Check Task Manager**  
+   - Open **Task Manager** (`Ctrl + Shift + Esc`) and look for **StellarAIO** in the list of running processes.  
+   - If you see it running but not opening visibly, try ending the process and reopening the application.
+
+2. **Run with Logs**  
+   - Open **Command Prompt** (`Win + R`, type `cmd`, and press Enter).  
+   - Drag the **StellarAIO shortcut** (desktop icon) into the Command Prompt window.  
+   - Press **Enter** to run StellarAIO with logs and check for any error messages.
+
+3. **Delete Config File (If Getting Unhandled Error)**  
+   - Click on the **magnifying glass** in the taskbar and type `%appdata%`.  
+   - Navigate to the **StellarAIO** folder and delete the `config.json` file.  
+   - Restart StellarAIO (Note: This will delete all saved settings).
+
+4. **Reinstall StellarAIO**  
+   - If the issue persists, try reinstalling StellarAIO:  
+     - Go to the **StellarAIO Discord server**.  
+     - Check the `#change-log` channel for the latest update.  
+     - Download and install the latest version.
+
+5. **Check for Updates**  
+   - StellarAIO should update automatically when opened.  
+   - If it fails to update, manually download the latest version from the **Stellar Dashboard**.
+
+6. **Check Virtual Server Issues (If Applicable)**  
+   - If you're running StellarAIO on a **virtual server**, there may be an issue with compatibility.  
+   - Check if other users are experiencing the same issue in the StellarAIO Discord.
+
+If none of these steps work, you may need to wait for an update from the StellarAIO team. Let me know if you need further assistance! 🚀
+2025-03-07 01:33:30,660 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 6
+2025-03-07 22:09:50,567 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2025-03-07 22:09:50,654 [INFO] Loading existing document database...
+2025-03-07 22:09:50,901 [INFO] Loading faiss with AVX2 support.
+2025-03-07 22:09:50,902 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2025-03-07 22:09:50,902 [INFO] Loading faiss.
+2025-03-07 22:09:51,119 [INFO] Successfully loaded faiss.
+2025-03-07 22:09:51,150 [INFO] Loading existing conversation database...
+2025-03-07 22:09:51,329 [INFO] Creating hybrid retriever...
+2025-03-07 22:09:51,429 [INFO] Hybrid RAG system setup complete.
+2025-03-07 22:09:51,433 [INFO] logging in using static token
+2025-03-07 22:09:59,545 [INFO] Shard ID None has connected to Gateway (Session ID: 1946034e27e7c0bd125c16533a9d9c21).
+2025-03-07 22:10:01,555 [INFO] Bot connected as Scouty#5100
+2025-03-07 22:10:01,555 [INFO] Hybrid RAG system is ready!
+2025-03-07 22:10:33,535 [INFO] Processing request from rami004055: 'Which version of StellarAIO are you on? > 3.8.9.3
+Which site/module are you inquiring about? > Pokemoncenter UK
+Which mode(s) are you using? > -
+Which kind of proxies are you using? > -
+Which error/issue are you running into? > Trying to add profiles from csv with country: UK. Giving me error: invalid must be 2 letter country
+
+
+Good afternoon, Tryed to add profiles from csv for pokemon center UK. At the country code i tryed UK, uk UnitedKingdom, UNITEDKINGDOM. But all failed when i tryed to import them to Stellar. It gives me error: country invalid must be 2 leter country code.
+
+Also tryed this issue to find in de chat history. But couldn't find anything regarding this error.'
+2025-03-07 22:10:40,100 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:10:41,060 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 22:10:44,803 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 22:10:44,854 [INFO] === RAG Query Debug Info ===
+2025-03-07 22:10:44,854 [INFO] Query: Which version of StellarAIO are you on? > 3.8.9.3
+Which site/module are you inquiring about? > Pokemoncenter UK
+Which mode(s) are you using? > -
+Which kind of proxies are you using? > -
+Which error/issue are you running into? > Trying to add profiles from csv with country: UK. Giving me error: invalid must be 2 letter country
+
+
+Good afternoon, Tryed to add profiles from csv for pokemon center UK. At the country code i tryed UK, uk UnitedKingdom, UNITEDKINGDOM. But all failed when i tryed to import them to Stellar. It gives me error: country invalid must be 2 leter country code.
+
+Also tryed this issue to find in de chat history. But couldn't find anything regarding this error.
+2025-03-07 22:10:44,855 [INFO] Retrieved Documents:
+2025-03-07 22:10:44,855 [INFO] Document 1 (first 300 characters): . However, this may increase the risk of payment failures if the bank enforces 3DS ◦When disabled, the bot will proceed as normal, meaning if 3DS is required, youʼll need to manually approve the transaction through your bankʼs authentication method3/4/25, 8:08 AM Stellar 287Pokemon Center JP Complet
+2025-03-07 22:10:44,855 [INFO] Document 2 (first 300 characters): . Click Verify OTP and Continue 9.Enter your Authenticator Key (around 16 charcters) into your Amazon session 3/4/25, 8:08 AM Stellar 66To Mass Import Amazon accounts go to Sessions tab > Click Mass Import Sessions Amazon Mass Import Sessions3/4/25, 8:08 AM Stellar 67Format: Email;Password;LoginProx
+2025-03-07 22:10:44,856 [INFO] Document 3 (first 300 characters): . Make sure your tasks have Override Payment? box checked 3/4/25, 8:08 AM Stellar 447Topps EU Complete guide on our Topps EU module Add your Topps accounts to Stellar by following the steps below 1.Go to Identities tab 2.Go to Sessions folder 3.Select Topps 4.Click the Add Session button Adding Sess
+2025-03-07 22:10:44,856 [INFO] Document 4 (first 300 characters): File: transcript_20250213_202600_processed_messages.json
+Topics: error, problem
+
+STAFF: <@414083385397477397> <@&932768408536232037>
+
+CLIENT: Purchase at Pokémon Center Online JP at the following URL, but a payment error occurred.
+Wish to confirm if CC is functioning as a purchase method.
+Even if I 
+2025-03-07 22:10:44,856 [INFO] Document 5 (first 300 characters): File: transcript_20250219_163454_processed_messages.json
+Topics: bot, amazon, issue
+
+STAFF: <@71256034894680064> <@&932768408536232037>
+
+CLIENT: I would like some assistance setting up the bot for UK sites.
+
+STAFF: EU Support will be with you shortly
+
+CLIENT: Thanks
+
+STAFF: hey <@71256034894680064>
+
+2025-03-07 22:10:44,856 [INFO] Final Answer: Good afternoon!  
+
+The error message **"country invalid must be 2 letter country code"** suggests that the country code you are using in your CSV file is incorrect. StellarAIO likely requires the **ISO 3166-1 alpha-2** country code format.  
+
+For the **United Kingdom**, the correct **2-letter country code** is:  
+**GB** (not UK)  
+
+### Solution:  
+Try updating your CSV file and replace **UK** with **GB**, then reattempt the import.  
+
+Let me know if you need further assistance! 😊
+2025-03-07 22:10:44,856 [INFO] Updated conversation history for user 1333272221556277311. Total messages: 2

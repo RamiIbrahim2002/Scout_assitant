@@ -4,6 +4,7 @@ import json
 import glob
 import PyPDF2
 import traceback
+import logging
 from tqdm import tqdm
 from dotenv import load_dotenv
 
@@ -22,7 +23,19 @@ from langchain.schema import BaseRetriever
 from pydantic import Field
 from typing import Any, List
 
+# Load environment variables
 load_dotenv()
+
+# Set up logging to both console and file.
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler("bot.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 ###############################################################
 #                   PDF & CONVERSATION PROCESSING             #
@@ -46,7 +59,7 @@ def extract_text_from_pdf(pdf_path):
                     text += page_text + "\n"
         return text
     except Exception as e:
-        print(f"Error extracting text from PDF {pdf_path}: {e}")
+        logger.error("Error extracting text from PDF %s: %s", pdf_path, str(e))
         return ""
 
 def clean_text(text):
@@ -58,12 +71,12 @@ def clean_text(text):
 
 def process_pdf_document(pdf_path):
     """Process PDF document and create a vector database."""
-    print(f"Processing PDF document: {pdf_path}")
+    logger.info("Processing PDF document: %s", pdf_path)
     raw_text = extract_text_from_pdf(pdf_path)
     cleaned_text = clean_text(raw_text)
     
     if len(cleaned_text) < 100:
-        print("Not enough content was extracted from the PDF.")
+        logger.warning("Not enough content was extracted from the PDF.")
         return None
 
     # Split text into chunks using a recursive splitter.
@@ -85,10 +98,10 @@ def process_pdf_document(pdf_path):
         for chunk in chunks
     ]
     
-    print(f"Creating vector database from {len(documents)} document chunks...")
+    logger.info("Creating vector database from %d document chunks...", len(documents))
     db = FAISS.from_documents(documents, OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key))
     db.save_local("stellar_vector_db")
-    print("Document vector database saved as 'stellar_vector_db'")
+    logger.info("Document vector database saved as 'stellar_vector_db'")
     
     return db
 
@@ -102,7 +115,7 @@ def process_conversation_file(file_path):
         processed_convo = process_single_conversation(conversation, os.path.basename(file_path))
         return processed_convo
     except Exception as e:
-        print(f"Error processing {file_path}: {e}")
+        logger.error("Error processing %s: %s", file_path, str(e))
         return None
 
 def process_single_conversation(conversation, file_id):
@@ -146,7 +159,7 @@ def process_single_conversation(conversation, file_id):
 def batch_process_conversations(directory, batch_size=100):
     """Process conversation files in batches."""
     file_paths = glob.glob(os.path.join(directory, "**/*processed_messages.json"), recursive=True)
-    print(f"Found {len(file_paths)} conversation files")
+    logger.info("Found %d conversation files", len(file_paths))
     
     all_documents = []
     total_batches = (len(file_paths) + batch_size - 1) // batch_size
@@ -156,7 +169,7 @@ def batch_process_conversations(directory, batch_size=100):
         end_idx = min((batch_idx + 1) * batch_size, len(file_paths))
         batch_files = file_paths[start_idx:end_idx]
         
-        print(f"Processing batch {batch_idx + 1}/{total_batches} ({len(batch_files)} files)")
+        logger.info("Processing batch %d/%d (%d files)", batch_idx + 1, total_batches, len(batch_files))
         batch_convos = []
         for file_path in tqdm(batch_files):
             processed = process_conversation_file(file_path)
@@ -178,23 +191,23 @@ def batch_process_conversations(directory, batch_size=100):
             batch_documents.append(doc)
         
         all_documents.extend(batch_documents)
-        print(f"Processed {len(batch_documents)} conversations in batch {batch_idx + 1}")
+        logger.info("Processed %d conversations in batch %d", len(batch_documents), batch_idx + 1)
     
-    print(f"Total conversations processed: {len(all_documents)}")
+    logger.info("Total conversations processed: %d", len(all_documents))
     return all_documents
 
 def create_conversation_db(conversation_dir, batch_size):
     """Create a vector database from all conversation files."""
     documents = batch_process_conversations(conversation_dir, batch_size)
     if not documents:
-        print("No valid conversations found.")
+        logger.warning("No valid conversations found.")
         return None
     
-    print("Creating vector database from conversations...")
+    logger.info("Creating vector database from conversations...")
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
     convo_db = FAISS.from_documents(documents, embeddings)
     convo_db.save_local("stellar_conversation_db")
-    print(f"Created conversation database with {len(documents)} entries")
+    logger.info("Created conversation database with %d entries", len(documents))
     return convo_db
 
 ###############################################################
@@ -224,23 +237,25 @@ def setup_full_rag_system():
     
     # Process or load documentation DB
     if not os.path.exists("stellar_vector_db"):
+        logger.info("Processing PDF document to create document DB...")
         doc_db = process_pdf_document(pdf_path)
     else:
-        print("Loading existing document database...")
+        logger.info("Loading existing document database...")
         doc_db = FAISS.load_local("stellar_vector_db", embeddings, allow_dangerous_deserialization=True)
     
     # Process or load conversation DB
     if not os.path.exists("stellar_conversation_db"):
+        logger.info("Processing conversation files to create conversation DB...")
         convo_db = create_conversation_db(conversation_dir, batch_size)
     else:
-        print("Loading existing conversation database...")
+        logger.info("Loading existing conversation database...")
         convo_db = FAISS.load_local("stellar_conversation_db", embeddings, allow_dangerous_deserialization=True)
     
     if not doc_db and not convo_db:
-        print("No databases available. Exiting.")
+        logger.error("No databases available. Exiting.")
         return None
     
-    print("Creating hybrid retriever...")
+    logger.info("Creating hybrid retriever...")
     doc_retriever = doc_db.as_retriever() if doc_db else None
     convo_retriever = convo_db.as_retriever() if convo_db else None
     hybrid_retriever = HybridRetriever(doc_retriever, convo_retriever)
@@ -259,14 +274,27 @@ def setup_full_rag_system():
         return_source_documents=True
     )
     
+    logger.info("Hybrid RAG system setup complete.")
     return qa_chain
 
 def query_rag_system(qa_system, query):
-    """Query the RAG system and return the answer."""
+    """Query the RAG system and return the answer, with full logging of retrieved text and response."""
     if not qa_system:
+        logger.error("RAG system not properly initialized.")
         return "RAG system not properly initialized."
+    
     result = qa_system({"query": query})
     answer = result.get("result", "No answer returned.")
+    
+    # Log the retrieved documents and final answer.
+    retrieved_docs = result.get("source_documents", [])
+    logger.info("=== RAG Query Debug Info ===")
+    logger.info("Query: %s", query)
+    logger.info("Retrieved Documents:")
+    for i, doc in enumerate(retrieved_docs):
+        logger.info("Document %d (first 300 characters): %s", i+1, doc.page_content[:300])
+    logger.info("Final Answer: %s", answer)
+    
     return answer
 
 ###############################################################
@@ -286,6 +314,8 @@ qa_system = setup_full_rag_system()
 
 @bot.event
 async def on_ready():
+    logger.info("Bot connected as %s", bot.user)
+    logger.info("Hybrid RAG system is ready!")
     print(f'Bot connected as {bot.user}')
     print("Hybrid RAG system is ready!")
 
@@ -302,22 +332,21 @@ async def scout_command(ctx, *, question=None):
 
     async with ctx.typing():
         try:
-            print(f"\nProcessing request from {ctx.author.name}: '{question}'")
-            # For simplicity, we use only the new question here.
-            # (Chat history could be incorporated if desired.)
+            logger.info("Processing request from %s: '%s'", ctx.author.name, question)
             answer = query_rag_system(qa_system, question)
             
             if not answer.strip():
                 answer = "I'm having trouble generating a response right now. Could you rephrase your question?"
-                print("Empty answer detected; using fallback message.")
+                logger.warning("Empty answer detected for query: '%s'", question)
             
-            # Optionally update chat history
+            # Update conversation history
             user_histories[user_id].append({"role": "user", "content": question})
             user_histories[user_id].append({"role": "assistant", "content": answer})
+            logger.info("Updated conversation history for user %s. Total messages: %d", user_id, len(user_histories[user_id]))
         
         except Exception as e:
-            print(f"Error processing request: {str(e)}")
-            print(traceback.format_exc())
+            logger.error("Error processing request: %s", str(e))
+            logger.error(traceback.format_exc())
             answer = f"An error occurred while processing your request: {str(e)[:200]}... Please try again."
     
     await ctx.send(answer)
@@ -327,6 +356,7 @@ async def reset_command(ctx):
     """Reset your conversation with Scout."""
     user_id = str(ctx.author.id)
     user_histories[user_id] = []
+    logger.info("Conversation history reset for user %s", user_id)
     await ctx.send("I've reset our conversation. What would you like to discuss next?")
 
 @bot.command(name="debug")
@@ -347,9 +377,13 @@ async def debug_command(ctx, *, question=None):
             for i, doc in enumerate(docs):
                 debug_info += f"Doc {i+1}: {doc.page_content[:250]}...\n\n"
             debug_info += f"**Chat History Length:** {len(user_histories.get(str(ctx.author.id), []))}\n"
+            logger.info("Debug command invoked by %s for query: '%s'", ctx.author.name, question)
+            logger.info("Debug info: %s", debug_info)
         
         except Exception as e:
             debug_info = f"Error during debug: {str(e)}\n{traceback.format_exc()}"
+            logger.error("Error in debug command: %s", str(e))
+            logger.error(traceback.format_exc())
     
     # Split the message if it's too long
     if len(debug_info) > 1900:
