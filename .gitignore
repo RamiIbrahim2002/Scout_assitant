@@ -5,3 +5,5 @@ app.py
 testing_openai.py
 vector_db_conver.py
 /data
+stellar_admin_transcripts_db/
+bot.log
