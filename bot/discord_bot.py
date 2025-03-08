@@ -106,7 +106,6 @@ def process_pdf_document(pdf_path):
     )
     db.save_local("stellar_vector_db")
     logger.info("Document vector database saved as 'stellar_vector_db'")
-
     return db
 
 def process_conversation_file(file_path):
@@ -127,7 +126,6 @@ def process_single_conversation(conversation, file_id):
     filtered_msgs = [msg for msg in conversation
                      if msg.get("content") and isinstance(msg.get("content"), str)
                      and not (msg.get("content", "").startswith("<@") and len(msg.get("content", "")) < 30)]
-
     if len(filtered_msgs) < 2:
         return None
 
@@ -164,7 +162,6 @@ def batch_process_conversations(directory, batch_size=100):
     """Process conversation files in batches."""
     file_paths = glob.glob(os.path.join(directory, "**/*processed_messages.json"), recursive=True)
     logger.info("Found %d conversation files", len(file_paths))
-
     all_documents = []
     total_batches = (len(file_paths) + batch_size - 1) // batch_size
 
@@ -172,14 +169,12 @@ def batch_process_conversations(directory, batch_size=100):
         start_idx = batch_idx * batch_size
         end_idx = min((batch_idx + 1) * batch_size, len(file_paths))
         batch_files = file_paths[start_idx:end_idx]
-
         logger.info("Processing batch %d/%d (%d files)", batch_idx + 1, total_batches, len(batch_files))
         batch_convos = []
         for file_path in tqdm(batch_files):
             processed = process_conversation_file(file_path)
             if processed:
                 batch_convos.append(processed)
-
         batch_documents = []
         for convo in batch_convos:
             doc = Document(
@@ -193,10 +188,8 @@ def batch_process_conversations(directory, batch_size=100):
                 }
             )
             batch_documents.append(doc)
-
         all_documents.extend(batch_documents)
         logger.info("Processed %d conversations in batch %d", len(batch_documents), batch_idx + 1)
-
     logger.info("Total conversations processed: %d", len(all_documents))
     return all_documents
 
@@ -206,7 +199,6 @@ def create_conversation_db(conversation_dir, batch_size):
     if not documents:
         logger.warning("No valid conversations found.")
         return None
-
     logger.info("Creating vector database from conversations...")
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
     convo_db = FAISS.from_documents(documents, embeddings)
@@ -363,7 +355,7 @@ def setup_full_rag_system():
     template = """
 You are Scout, a friendly and knowledgeable member of the Stellar Support Team on Discord.
 Your role is to help users with queries related to Stellar's products, services, and troubleshooting.
-Here is the conversation history:
+A user opened a tickets and here is the conversation history:
 {history}
 
 Context:
@@ -397,7 +389,6 @@ def query_rag_system(qa_system, query, conversation_history=""):
     if not qa_system:
         logger.error("System not properly initialized.")
         return "System not properly initialized."
-
     answer, retrieved_docs = qa_system(query, conversation_history)
     logger.info("=== Query Debug Info ===")
     logger.info("Query: %s", query)
@@ -407,34 +398,57 @@ def query_rag_system(qa_system, query, conversation_history=""):
     return answer
 
 ###############################################################
+#                      RATING SYSTEM SETUP                    #
+###############################################################
+
+class IssueSolvedRatingView(discord.ui.View):
+    """
+    A Discord view for rating whether Scout solved the issue.
+    If the user needed to call human assistance, you may also treat that as a 'Not Solved' response.
+    Additionally, users can choose to keep chatting with Scout.
+    """
+    def __init__(self, *, timeout: float = None):
+        super().__init__(timeout=timeout)
+        
+    @discord.ui.button(label="Solved", style=discord.ButtonStyle.success, custom_id="solved")
+    async def solved(self, interaction: discord.Interaction, button: discord.ui.Button):
+        logger.info("User %s marked the issue as SOLVED.", interaction.user)
+        await interaction.response.send_message("Great! I'm glad Scout solved your issue.", ephemeral=True)
+
+    @discord.ui.button(label="Not Solved", style=discord.ButtonStyle.danger, custom_id="not_solved")
+    async def not_solved(self, interaction: discord.Interaction, button: discord.ui.Button):
+        logger.info("User %s marked the issue as NOT SOLVED.", interaction.user)
+        await interaction.response.send_message("I'm sorry to hear that. It looks like you required human assistance, so we'll mark this as not solved.", ephemeral=True)
+    
+    @discord.ui.button(label="Keep Chatting", style=discord.ButtonStyle.primary, custom_id="keep_chatting")
+    async def keep_chatting(self, interaction: discord.Interaction, button: discord.ui.Button):
+        logger.info("User %s selected to keep chatting.", interaction.user)
+        await interaction.response.send_message("Alright, Am all ears!", ephemeral=True)
+
+
+###############################################################
 #                         DISCORD BOT                         #
 ###############################################################
 
 # Define a staff channel ID for notifications (update with your actual channel ID)
 STAFF_CHANNEL_ID = int(os.getenv("STAFF_CHANNEL_ID", "123456789012345678"))
 
-# Create a view with a "Call Human Assistance" button.
 class CallHumanAssistanceView(discord.ui.View):
     def __init__(self, *, timeout: float = None):
         super().__init__(timeout=timeout)
-
     @discord.ui.button(
         label="Call Human Assistance",
         style=discord.ButtonStyle.primary,
-        custom_id="tickettool_call_human_assistance"  # Customize for TicketTool integration if needed
+        custom_id="tickettool_call_human_assistance"
     )
     async def call_human(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # Notify the staff channel that a user has requested assistance.
         staff_channel = bot.get_channel(STAFF_CHANNEL_ID)
         if staff_channel:
             await staff_channel.send(f"User {interaction.user.mention} has requested human assistance!")
         else:
             logger.warning("Staff channel not found. Please check your STAFF_CHANNEL_ID.")
-        # Acknowledge the interaction privately.
-        await interaction.response.send_message(
-            "Your request for human assistance has been sent to our staff.",
-            ephemeral=True
-        )
+        # Optionally, you could mark the conversation as not solved automatically here.
+        await interaction.response.send_message("Your request for human assistance has been sent to our staff.", ephemeral=True)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -458,7 +472,6 @@ async def scout_command(ctx, *, question=None):
     user_id = str(ctx.author.id)
     if user_id not in user_histories:
         user_histories[user_id] = []
-
     if not question:
         await ctx.send("Hi there! I'm Scout from the Stellar Support Team. How can I help you today?")
         return
@@ -475,8 +488,6 @@ async def scout_command(ctx, *, question=None):
             if not answer.strip():
                 answer = "I'm having trouble generating a response right now. Could you rephrase your question?"
                 logger.warning("Empty answer detected for query: '%s'", question)
-
-            # Record both the user's question and the assistant's answer.
             user_histories[user_id].append({"role": "user", "content": question})
             user_histories[user_id].append({"role": "assistant", "content": answer})
             logger.info("Updated conversation history for user %s. Total messages: %d", user_id, len(user_histories[user_id]))
@@ -486,8 +497,9 @@ async def scout_command(ctx, *, question=None):
             answer = f"An error occurred while processing your request: {str(e)[:200]}... Please try again."
 
     await ctx.send(answer)
-    view = CallHumanAssistanceView(timeout=None)
-    await ctx.send("If you need human assistance, please click the button below:", view=view)
+    # Send the issue rating view.
+    rating_view = IssueSolvedRatingView(timeout=None)
+    await ctx.send("Did Scout solve your issue?", view=rating_view)
 
 @bot.command(name="reset")
 async def reset_command(ctx):
@@ -519,7 +531,6 @@ async def debug_command(ctx, *, question=None):
             debug_info = f"Error during debug: {str(e)}\n{traceback.format_exc()}"
             logger.error("Error in debug command: %s", str(e))
             logger.error(traceback.format_exc())
-
     if len(debug_info) > 1900:
         parts = [debug_info[i:i+1900] for i in range(0, len(debug_info), 1900)]
         for part in parts:
